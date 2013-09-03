@@ -84,6 +84,17 @@ module Magento
         commit('cancel', *args)
       end
 
+      # sales_order.mask_cc_number
+      # Permanently mask the credit card number
+      # 
+      # Return: boolean
+      # 
+      # Arguments:
+      # 
+      # mixed orderIncrementId - order increment id
+      def mask_cc_number(*args)
+        commit('maskCcNumber', *args)
+      end
       def find_by_id(id)
         find(:first, {:order_id => id})
       end
