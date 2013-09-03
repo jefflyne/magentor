@@ -19,6 +19,31 @@ module Magento
         end
       end
 
+      # catalog_product_attribute.info
+      # Retrieve attribute information
+      #
+      # Return: array
+      #
+      # Arguments:
+      #
+      # mixed attribute - attribute code or ID
+      def info(*args)
+        new(commit("info", *args))
+      end
+      
+      # catalog_product_attribute.update
+      # Update product attribute
+      # 
+      # Return: boolean
+      # 
+      # Arguments:
+      # 
+      # mixed attribute - attribute code or ID
+      # array data - array of data to update
+      def update(*args)
+        commit("update", *args)
+      end
+
       # catalog_product_attribute.currentStore
       # Set/Get current store view
       # 
@@ -44,6 +69,20 @@ module Magento
       def options(*args)
         commit("options", *args)
       end
+    end
+    
+    # catalog_product_attribute.update
+    # Update a product attribute
+    #
+    # Return: boolean
+    #
+    # Arguments:
+    #
+    # mixed attribute - attribute code or ID
+    # hash data - hash of data to update (is turned into an array)
+    def update_attributes(data)
+      data.each_pair { |k, v| @attributes[k] = v }
+      self.class.update(self.attribute_id, data)
     end
   end
 end

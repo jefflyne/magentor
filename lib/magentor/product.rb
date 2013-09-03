@@ -81,6 +81,20 @@ module Magento
         commit("delete", *args)
       end
 
+      # catalog_product.listOfAdditionalAttributes
+      # Get the list of additional attributes.
+      # Additional attributes are attributes that are not in the default set of attributes.
+      # 
+      # Return: array
+      # 
+      # Arguments:
+      # 
+      # string - productType - Product type (e.g., simple)
+      # string - attributeSetId - Attribute set ID
+      def list_of_additional_attributes(*args)
+        commit("listOfAdditionalAttributes", *args)
+      end
+
       # catalog_product.currentStore
       # Set/Get current store view
       # 
